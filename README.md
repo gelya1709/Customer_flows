@@ -8,7 +8,7 @@ The task of marketers is to plan promos in such a way that they bring maximum be
 **The task of this project** is to develop a new analysis method to make the following decisions:
 
 - What consumer segments can be distinguished by their value for business?
-- What types of promotions are the most effective and what segments of consumers?
+- What types of promotions are the most effective for which segments of consumers?
 - What should be the duration of the promotions and when should they be launched?
 
 ## Data
