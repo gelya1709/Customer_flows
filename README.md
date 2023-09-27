@@ -1,78 +1,77 @@
-# Анализ эффективности промоакций на основе перетоков покупателей
-Проект посвящен сегментации покупателей и выявлению наиболее эффективных видов рекламных акций на основе перетоков покупателей между кластерами во времени. Набор данных содержит более **20 млн наблюдений**. Анализ проводился на Python и R.
+# Analysis of the effectiveness of promotions based on customer reaches
+The project is devoted to the segmentation of customers and identifying the most effective types of advertising shares based on buyers between clusters in time. The data set contains more than **20 million observations**. The analysis was carried out in Python and R.
 
-## Мотивация
-Крупные ритейл компании запускают множество промоаций для поддержания активности покупателей. 
-Задача маркетологов - планировать промокалендари таким образом, чтобы 
-промоакции приносили максимальную пользу бизнесу.  
+## Motivation
+Large retail companies launch many promotions to maintain customer activity.
+The task of marketers is to plan promoters in such a way that promotions bring maximum benefit to the business.
 
-**Задача этого проекта** - разработать новый метод анализа для принятия следующих решений:
+**The task of this project** is to develop a new analysis method to make the following decisions:
 
-- Какие сегменты потребителей можно выделить по их ценности для бизнеса?
-- Какие типы промоакций самые эффективные и на каких сегментах потребителей?
-- Какая должна быть продолжительность промоакций и когда их следует запускать?
+- What consumer segments can be distinguished by their value for business?
+- What types of promotions are the most effective and what segments of consumers?
+- What should be the duration of the promotions and when should they be launched?
 
-## Данные
-Период: 09.2019 - 09.2020
+## Data
+Period: 09.2019 - 09.2020
 
-**Датасет №1 содержит транзакционные данные покупателей.**
+**Dataset №1 contains transactional data of customers.**
 
-Основные переменные: 
-- id покупателя 
-- дата покупки
-- id чека
-- кол-во продуктов
-- цена
+Main variables: 
+- customer id  
+- purchase date
+- check id
+- number of items
+- price
 
-**Датасет №2 содержит информацию о промоакциях.**
+**Dataset №2 contains the information about promotions.**
 
-Основные переменные: 
-- тип промоакции (билборды, фасады, сезонные и двухнедельные) 
-- id промоакции
-- дата начала
-- дата окончания
+Main variables: 
+- promo type (billboards, facades, seasonal and two-week) 
+- promo id
+- start date
+- end date
 
-## Сегментация 
+## Segmentation 
 
-1. Деление датасета на 52 периода (1 неделя = 1 период)
-2. Выделение кластеров потребителей алгоритмом K-means **в каждом периоде**. В качестве метрик для сегментации были выбраны **frequency** и **monetary** метрики (из RFM модели, подробнее см. [здесь](https://www.investopedia.com/terms/r/rfm-recency-frequency-monetary-value.asp))
+1. Dataset division into 52 periods (1 week = 1 period)
+2. The allocation of consumer clusters with the K-Means algorithm **in each period**. **Frequency** and **monetary** metrics from RFM models were selected as metrics for segmentation (more details see [here](https://www.investopedia.com/terms/r/rfm-recency-frequency-monetary-value.asp))
 
-**В результате получено 4 кластера потребителей:** 
+**As a result, 4 consumer clusters were received:** 
 
-- **churn** - не активны в рассматриваемый период
-- **sleeping** - средний чек 2 000, 1 покупка в неделю
-- **loyal** - средний чек 5 000, 3 покупки в неделю
-- **champions** - средний чек 11 000, 3 покупки в неделю
+- **churn** - are not active in the period under consideration
+- **sleeping** - average check 2 000 rubles, 1 purchase per week
+- **loyal** - average check 5 000 rubles, 3 purchases per week
+- **champions** - average check 11 000 rubles, 3 purchases per week
 
-### Подсчет перетоков 
-Из 4-х кластеров, полученных в каждую из 52 недель, вычислены **16 перетоков** (например, from_churn_to_sleeping для 51 периода)
+### Calculation of flows
+Of the 4 clusters obtained in each of the 52 weeks, **16 flows** (for example, from_churn_to_sleeping for 51 periods) are calculated
 
-### Анализ промо датасета 
-Среднее количество акций каждого типа для каждого периода:
+### Analysis Promo Dataset
+The average number of promos of each type for each period:
 
-- Билборды - 50
-- Фасады - 70
-- Сезонные промо - 150
-- Двухнедельные промо - 130
+- billboards - 50
+- facades - 70
+- seasonal promo - 150
+- two-week promo - 130
 
-## Определение влияния промо на перетоки (в R)
+## Definition of the influence of promo on the flows (in R)
 
-1. SSA анализ, чтобы обнаружить трендовую составляющую и избавиться от шума
-2. Метод первых разностей, чтобы привести распределение в норму
-3. Обучение модели DBN для выявления причинно-следственных связей
+1. SSA Analysis to detect a trend component and get rid of noise
+2. The method of the first difference to bring the distribution to normal
+3. Training of the DBN model to identify causal relationships
 
-## Выводы и рекомендации
+## Conclusions and recommendations
 
 
-1. Сегмент покупателей с низкой активностью (sleeping) требует постоянного стимулирования, иначе эти покупатели оттекают
-:arrow_right: **следует на постоянной основе запускать двухнедельные промоакции, рассчитанные на покупателя с низким средним чеком**
+1. The segment of buyers with low activity (Sleeping) requires constant stimulation, otherwise, these buyers flow
+: arrow_right: **should be on an ongoing basis to run two-week promotions designed for a buyer with a low average check**
 
-2. Билборды и фасады воздействуют на клиентов быстрее всего (в течение 1 недели). 
-Наибольший эффект они оказывают на покупателей со средней и высокой активностью (loyal и champions сегменты)
-:arrow_right: **билборды и фасады должны постоянно присутствовать для поддержания покупательской активности, однако их кол-во следует оптимизировать**
+2. Billboards and facades affect customers the fastest (within 1 week).
+They have the greatest effect on buyers with medium and high activity (Loyal and Champions segments)
+: arrow_right: **billboards and facades should constantly be present to maintain customer activity, but their number should be optimized**
 
-3. Сезонные и двухнедельные промоакции имеют отложенный эффект и начинают работать спустя 2 недели с момента запуска
-:arrow_right: **эти типы промоакций следует запускать за 2 недели до предполагаемого падения спроса**
+3. Seasonal and two-week promotions have a defined effect and begin to work after 2 weeks from the date of launch
+: arrow_right: **these types of promotions should be launched 2 weeks before the expected fall in demand**
 
 
 
