@@ -1,4 +1,4 @@
-# Analysis of the effectiveness of promotions based on customer flows
+# Analysis of promotions based on customer flows in retail
 The project is devoted to the segmentation of customers and identifying the most effective types of advertising shares based on buyers between clusters in time. The data set contains more than **20 million observations**. The analysis was carried out in Python and R.
 
 ## Motivation
