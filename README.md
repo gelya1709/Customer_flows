@@ -34,7 +34,7 @@ Main variables:
 ## Segmentation 
 
 1. Dataset division into 52 periods (1 week = 1 period)
-2. The allocation of consumer clusters with the K-Means algorithm **in each period**. **Frequency** and **monetary** metrics from RFM models were selected as metrics for segmentation (more details see [here](https://www.investopedia.com/terms/r/rfm-recency-frequency-monetary-value.asp))
+2. The allocation of consumer clusters with the K-Means algorithm **in each period**. **Frequency** and **Monetary** metrics from RFM models were selected as metrics for segmentation (more details see [here](https://www.investopedia.com/terms/r/rfm-recency-frequency-monetary-value.asp))
 
 **As a result, 4 consumer clusters were received:** 
 
@@ -64,14 +64,14 @@ The average number of promos of each type for each period:
 
 
 1. The segment of buyers with low activity (Sleeping) requires constant stimulation, otherwise, these buyers flow
-: arrow_right: **should be on an ongoing basis to run two-week promotions designed for a buyer with a low average check**
+:arrow_right: **should be on an ongoing basis to run two-week promotions designed for a buyer with a low average check**
 
 2. Billboards and facades affect customers the fastest (within 1 week).
 They have the greatest effect on buyers with medium and high activity (Loyal and Champions segments)
-: arrow_right: **billboards and facades should constantly be present to maintain customer activity, but their number should be optimized**
+:arrow_right: **billboards and facades should constantly be present to maintain customer activity, but their number should be optimized**
 
 3. Seasonal and two-week promotions have a defined effect and begin to work after 2 weeks from the date of launch
-: arrow_right: **these types of promotions should be launched 2 weeks before the expected fall in demand**
+:arrow_right: **these types of promotions should be launched 2 weeks before the expected fall in demand**
 
 
 
