@@ -1,9 +1,9 @@
 # Analysis of promotions based on customer flows in retail
-The project is devoted to the segmentation of customers and identifying the most effective types of advertising shares based on buyers between clusters in time. The data set contains more than **20 million observations**. The analysis was carried out in Python and R.
+The project is dedicated to customer segmentation and the identification of the most effective types of advertising campaigns (hereafter referred to as 'promos' or 'promotions') based on changes in buyers' purchasing activity (hereafter referred to as 'flows') over time. The data set contains more than **20 million observations**. The analysis was carried out in Python and R.
 
 ## Motivation
 Large retail companies launch many promotions to maintain customer activity.
-The task of marketers is to plan promoters in such a way that promotions bring maximum benefit to the business.
+The task of marketers is to plan promos in such a way that they bring maximum benefit to the business.
 
 **The task of this project** is to develop a new analysis method to make the following decisions:
 
