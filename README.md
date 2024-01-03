@@ -104,6 +104,10 @@ The custom function create_names is employed to assign labels to clusters, categ
 Three distinct clusters emerge: 'sleeping' for less active buyers, 'loyal' for consistently engaged buyers, and 'champions' for top-performing buyers.
 The Rusinka depicts the average Monetary distribution across the entire period for the three clusters.
 
+![Monetary Mean](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_mean.png)
+
+![Monetary Sum](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_sum.png)
+
 #### Resultant Datasets:
 
 Two datasets are generated:
