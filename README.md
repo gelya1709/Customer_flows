@@ -68,7 +68,7 @@ The following key steps were taken in the data preprocessing phase:
 - Summary Statistics: Calculated unique buyer counts and plotted revenue distribution across days over two years.
 - Outlier Handling: To improve data integrity, outliers were identified and removed. Specifically, clients with unusually high purchase frequencies (possibly wholesalers) were identified using a 98% percentile threshold. Figure 1 illustrates the discrete removal of only 13 unique client_ids.
 
-![Screenshot](screenshot.png)
+![Revenue Distribution (before&after)](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Revenue_distribution.jpg)
 
 - Customer Retention Criteria: Buyers with fewer than 5 purchases in the two-year timeframe were excluded from the dataset. This decision was rooted in the strategic focus on returning customers for subsequent analyses.
 
