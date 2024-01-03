@@ -36,7 +36,7 @@ Main variables:
 - The first part of the analysis includes data preprocessing, clustering customers using transactional data of a Russian supermarket chain, and calculation of flows between them.
 - In the second part such techniques as Singular Spectrum Analysis (SSA), first differences method, and trained Dynamic Bayesian Network (DBN) model are used to find causal relationships between flow coefficients and the number of promotions.
 
-[a link](https://github.com/gelya1709/customer_flows/blob/main/Detailed%20description%20of%20analysis)
+**The detailed description of analysis** is in the documentation here: [Steps of analysis](https://github.com/gelya1709/customer_flows/blob/main/Detailed%20description%20of%20analysis)
 
 ## Result 
 The types of promotions that have the greatest impact on positive (when
