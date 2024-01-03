@@ -120,7 +120,7 @@ The primary dataset for subsequent analyses is denoted as 'customers_with_metric
 We will work with the data obtained in the previous step *customers_with_metrics(52&2)*
 
 The purpose of this step is to get the size of each cluster and, accordingly, each flow (for example, sleeping to loyal).
-![Flows calculation|320x271](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Methodology%20flows%20calculation.png)
+![Flows calculation|250x200](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Methodology%20flows%20calculation.png)
 
 We need to deal with NaN values:
 - replace NaN values for columns with cluster labels with churn - this means that the buyer did not make any purchases in this period. This will be the so-called 4th cluster of inactive buyers.
