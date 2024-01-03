@@ -5,6 +5,7 @@ The project is dedicated to customer segmentation and the identification of the 
 - [Project Overview](#project-overview)
 - [Data Description](#data-description)
 - [Detailed Description of Analysis](#detailed-description-of-analysis)
+- [Results](#results) 
 
 ### Project Overview
 
@@ -67,6 +68,8 @@ The following key steps were taken in the data preprocessing phase:
 - **Column Removal:** Unnecessary columns for analysis were eliminated.
 - **Date Conversion:** Date entries were converted to the datetime data type.
 - **Month Enumeration:** An additional column was added to encode month numbers.
+![Dataset example](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Dataset%20example.png)
+
 - **Summary Statistics:** Calculated unique buyer counts and plotted revenue distribution across days over two years.
 - **Outlier Handling:** To improve data integrity, outliers were identified and removed. Specifically, clients with unusually high purchase frequencies (possibly wholesalers) were identified using a 98% percentile threshold. Figure 1 illustrates the discrete removal of only 13 unique client_ids.
 
@@ -117,6 +120,7 @@ The primary dataset for subsequent analyses is denoted as 'customers_with_metric
 We will work with the data obtained in the previous step *customers_with_metrics(52&2)*
 
 The purpose of this step is to get the size of each cluster and, accordingly, each flow (for example, sleeping to loyal).
+![Flows calculation](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Methodology%20flows%20calculation.png)
 
 We need to deal with NaN values:
 - replace NaN values for columns with cluster labels with churn - this means that the buyer did not make any purchases in this period. This will be the so-called 4th cluster of inactive buyers.
@@ -170,4 +174,10 @@ Regression output:
 
 DBN model:
 ![DBN model](https://github.com/gelya1709/customer_flows/blob/main/Graphs/DBN%20model.png)
+
+### Results
+
+![Results Positive flows](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Results%20Positive%20flows.png)
     
+![Results Negative flows](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Results%20Negative%20flows.png)
+
