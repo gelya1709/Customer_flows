@@ -50,11 +50,29 @@ Main variables:
 - start date
 - end date
 
-## Brief description of analysis 
+**Brief description of analysis:** 
 - The first part of the analysis includes data preprocessing, clustering customers using transactional data of a Russian supermarket chain, and calculation of flows between them.
 - In the second part such techniques as Singular Spectrum Analysis (SSA), first differences method, and trained Dynamic Bayesian Network (DBN) model are used to find causal relationships between flow coefficients and the number of promotions.
 
-### Detailed Description of Analysis
+## Detailed Description of Analysis
+
+1. Data preprocessing.
+
+In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions. It is important to note that due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
+
+The following key steps were taken in the data preprocessing phase:
+
+- Column Removal: Unnecessary columns for analysis were systematically eliminated.
+- Date Conversion: Date entries were converted to the datetime data type.
+- Month Enumeration: An additional column was added to encode month numbers.
+- Summary Statistics: Calculated unique buyer counts and plotted revenue distribution across days over two years.
+- Outlier Handling: To improve data integrity, outliers were identified and removed. Specifically, clients with unusually high purchase frequencies (possibly wholesalers) were identified using a 98% percentile threshold. Figure 1 illustrates the discrete removal of only 13 unique client_ids.
+
+![Screenshot](screenshot.png)
+
+- Customer Retention Criteria: Buyers with fewer than 5 purchases in the two-year timeframe were excluded from the dataset. This decision was rooted in the strategic focus on returning customers for subsequent analyses.
+
+In summary, these data preprocessing efforts resulted in the creation of the *data_for_clustering* dataset. This refined dataset comprises 33,918 original buyers who made more than 5 purchases during the two-year analytical window. 
 
 
 
