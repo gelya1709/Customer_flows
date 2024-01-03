@@ -106,8 +106,6 @@ The Rusinka depicts the average Monetary distribution across the entire period f
 
 ![Monetary Mean](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_mean.png)
 
-![Monetary Sum](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_sum.png)
-
 #### Resultant Datasets:
 
 Two datasets are generated:
