@@ -2,22 +2,23 @@
 The project is dedicated to customer segmentation and the identification of the most effective types of advertising campaigns (hereafter referred to as 'promos' or 'promotions') based on changes in buyers' purchasing activity (hereafter referred to as 'flows') over time. The data set contains more than **20 million observations**. The analysis was carried out in Python and R.
 
 ## Motivation
-Large retail companies launch many promotions to maintain customer activity.
-The task of marketers is to plan promos in such a way that they bring maximum benefit to the business.
+Big media promotions (billboards, facades, etc.) are widely used for offline marketing
+campaigns in retail and present an effective tool for creating a satisfying consumer experience.
+However, despite the undeniable effectiveness of such promotions, it is rather difficult to
+evaluate their impact. 
 
-**The task of this project** is to develop a new analysis method to make the following decisions:
-
-- What consumer segments can be distinguished by their value for business?
-- What types of promotions are the most effective for which segments of consumers?
-- What should be the duration of the promotions and when should they be launched?
+## Goal 
+The purpose of this project is to develop a method for evaluating the effects
+of promotions on customer flows and evaluate the effectiveness of various types of Big Media
+promotions using it.
 
 ## Data
-Period: 09.2019 - 09.2020
+Period: 01.2019 - 12.2020
 
 **Dataset №1 contains transactional data of customers.**
 
 Main variables: 
-- customer id  
+- client id  
 - purchase date
 - check id
 - number of items
@@ -31,47 +32,21 @@ Main variables:
 - start date
 - end date
 
-## Segmentation 
+## Brief description of analysis 
+- The first part of the analysis includes data preprocessing, clustering customers using transactional data of a Russian supermarket chain, and calculation of flows between them.
+- In the second part such techniques as Singular Spectrum Analysis (SSA), first differences method, and trained Dynamic Bayesian Network (DBN) model are used to find causal relationships between flow coefficients and the number of promotions.
 
-1. Dataset division into 52 periods (1 week = 1 period)
-2. The allocation of consumer clusters with the K-Means algorithm **in each period**. **Frequency** and **Monetary** metrics from RFM models were selected as metrics for segmentation (more details see [here](https://www.investopedia.com/terms/r/rfm-recency-frequency-monetary-value.asp))
+## Result 
+The types of promotions that have the greatest impact on positive (when
+buyers become more active) and negative (when buying activity decreases) flows were
+identified. Also, assumptions have been made about the most sensitive consumer clusters
+to promotions. 
 
-**As a result, 4 consumer clusters were received:** 
+## Impact
+The developed method can be used in marketing to evaluate both individual
+promotions and their joint effectiveness. The results of the analysis provide managers with a deeper
+understanding of changes in customer behavior and the ability to influence these changes
 
-- **churn** - are not active in the period under consideration
-- **sleeping** - average check 2 000 rubles, 1 purchase per week
-- **loyal** - average check 5 000 rubles, 3 purchases per week
-- **champions** - average check 11 000 rubles, 3 purchases per week
-
-### Calculation of flows
-Of the 4 clusters obtained in each of the 52 weeks, **16 flows** (for example, from_churn_to_sleeping for 51 periods) are calculated
-
-### Analysis Promo Dataset
-The average number of promos of each type for each period:
-
-- billboards - 50
-- facades - 70
-- seasonal promo - 150
-- two-week promo - 130
-
-## Definition of the influence of promo on the flows (in R)
-
-1. SSA Analysis to detect a trend component and get rid of noise
-2. The method of the first difference to bring the distribution to normal
-3. Training of the DBN model to identify causal relationships
-
-## Conclusions and recommendations
-
-
-1. The segment of buyers with low activity (Sleeping) requires constant stimulation, otherwise, these buyers flow
-:arrow_right: **should be on an ongoing basis to run two-week promotions designed for a buyer with a low average check**
-
-2. Billboards and facades affect customers the fastest (within 1 week).
-They have the greatest effect on buyers with medium and high activity (Loyal and Champions segments)
-:arrow_right: **billboards and facades should constantly be present to maintain customer activity, but their number should be optimized**
-
-3. Seasonal and two-week promotions have a defined effect and begin to work after 2 weeks from the date of launch
-:arrow_right: **these types of promotions should be launched 2 weeks before the expected fall in demand**
 
 
 
