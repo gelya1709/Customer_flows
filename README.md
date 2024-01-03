@@ -101,8 +101,13 @@ The clustering procedure unfolds as follows:
 
 The custom function create_names is employed to assign labels to clusters, categorizing them into 'sleeping,' 'loyal,' and 'champions' based on the normalized Frequency and Monetary metrics in each period.
 
-Three distinct clusters emerge: 'sleeping' for less active buyers, 'loyal' for consistently engaged buyers, and 'champions' for top-performing buyers.
-The Rusinka depicts the average Monetary distribution across the entire period for the three clusters.
+**As a result, 3 consumer clusters were received:**
+
+- **sleeping** - average check 2 000 rubles, 1 purchase per week
+- **loyal** - average check 5 000 rubles, 3 purchases per week
+- **champions** - average check 11 000 rubles, 3 purchases per week
+
+Distribution of mean_monetary values across clusters over 52 weeks:
 
 ![Monetary Mean](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_mean.png)
 
