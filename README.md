@@ -86,20 +86,13 @@ The dataset is then filtered to encompass weekly periods, with week numbers adju
 
 The resulting input data for clustering contains the transactional records of buyers within the specified timeframe with week numbers over 52 full weeks.
 
-The clustering procedure unfolds as follows:
-
-#### 1. Function Definition - create_names: A bespoke function is defined to assign labels to clusters based on the calculated metrics.
-
 #### 2. Clustering Algorithm:
 
-- A subset is selected for each week, and buyer activity is computed with such metrics as Frequency (number of purchases) and Monetary (total spending) for each period.
+- A subset is selected for each week, and buyer activity is computed with such **metrics as Frequency (number of purchases) and Monetary (total spending)** for each period.
 - Both Frequency and Monetary metrics are normalized using the **Standard Scaler**.
 - The **K-means++ algorithm** is applied with the selection of 3 clusters, driven by the observation that this configuration yields the highest silhouette score values across the 52 periods.
 - **Silhouette score**, computed as an average over all periods, attains a value of 0.59.
-
-#### Cluster Naming with create_names Function:
-
-The custom function create_names is employed to assign labels to clusters, categorizing them into 'sleeping,' 'loyal,' and 'champions' based on the normalized Frequency and Monetary metrics in each period.
+- Cluster Labelling with **custom create_names function**: *create_names* is employed to assign labels to clusters, categorizing them into 'sleeping,' 'loyal,' and 'champions' based on the normalized Frequency and Monetary metrics in each period.
 
 **As a result, 3 consumer clusters were received:**
 
