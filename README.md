@@ -56,27 +56,61 @@ Main variables:
 
 ## Detailed Description of Analysis
 
-1. Data preprocessing.
+### 1. Data preprocessing.
 
-In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions. It is important to note that due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
+In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions.
+
+Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
 
 The following key steps were taken in the data preprocessing phase:
 
-- Column Removal: Unnecessary columns for analysis were systematically eliminated.
-- Date Conversion: Date entries were converted to the datetime data type.
-- Month Enumeration: An additional column was added to encode month numbers.
-- Summary Statistics: Calculated unique buyer counts and plotted revenue distribution across days over two years.
-- Outlier Handling: To improve data integrity, outliers were identified and removed. Specifically, clients with unusually high purchase frequencies (possibly wholesalers) were identified using a 98% percentile threshold. Figure 1 illustrates the discrete removal of only 13 unique client_ids.
+- **Column Removal:** Unnecessary columns for analysis were eliminated.
+- **Date Conversion:** Date entries were converted to the datetime data type.
+- **Month Enumeration:** An additional column was added to encode month numbers.
+- **Summary Statistics:** Calculated unique buyer counts and plotted revenue distribution across days over two years.
+- **Outlier Handling:** To improve data integrity, outliers were identified and removed. Specifically, clients with unusually high purchase frequencies (possibly wholesalers) were identified using a 98% percentile threshold. Figure 1 illustrates the discrete removal of only 13 unique client_ids.
 
 ![Revenue Distribution (before&after)](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Revenue_distribution.jpg)
 
-- Customer Retention Criteria: Buyers with fewer than 5 purchases in the two-year timeframe were excluded from the dataset. This decision was rooted in the strategic focus on returning customers for subsequent analyses.
+- **Customer Retention Criteria:** Buyers with fewer than 5 purchases in the two-year timeframe were excluded from the dataset. This decision was rooted in the strategic focus on returning customers for subsequent analyses.
 
 In summary, these data preprocessing efforts resulted in the creation of the *data_for_clustering* dataset. This refined dataset comprises 33,918 original buyers who made more than 5 purchases during the two-year analytical window. 
 
+### 2. Clustering
 
+To proceed with the analysis, we first load the preprocessed dataset *data_for_clustering*. 
 
+We choose to shorten the analysis period to a one-year timeframe, spanning from September 2019 to September 2020, thus excluding the period of the COVID-19 pandemic due to its disruptive influence on the stability of time series data.
 
+The dataset is then filtered to encompass weekly periods, with week numbers adjusted using the isocalendar method and subsequently compressed into the 1-50 range for analytical convenience. 
+
+The resulting input data for clustering contains the transactional records of buyers within the specified timeframe with week numbers over 52 full weeks.
+
+The clustering procedure unfolds as follows:
+
+#### 1. Function Definition - create_names: A bespoke function is defined to assign labels to clusters based on the calculated metrics.
+
+#### 2. Clustering Algorithm:
+
+- A subset is selected for each week, and buyer activity is computed with such metrics as Frequency (number of purchases) and Monetary (total spending) for each period.
+- Both Frequency and Monetary metrics are normalized using the **Standard Scaler**.
+- The **K-means++ algorithm** is applied with the selection of 3 clusters, driven by the observation that this configuration yields the highest silhouette score values across the 52 periods.
+- **Silhouette score**, computed as an average over all periods, attains a value of 0.59.
+
+#### Cluster Naming with create_names Function:
+
+The custom function create_names is employed to assign labels to clusters, categorizing them into 'sleeping,' 'loyal,' and 'champions' based on the normalized Frequency and Monetary metrics in each period.
+
+Three distinct clusters emerge: 'sleeping' for less active buyers, 'loyal' for consistently engaged buyers, and 'champions' for top-performing buyers.
+The Rusinka depicts the average Monetary distribution across the entire period for the three clusters.
+
+#### Resultant Datasets:
+
+Two datasets are generated:
+- One with client_id and assigned cluster labels for each period.
+- Another with client_id, cluster labels, and metrics for each period, with the distribution visualized in Figure 2.
+
+The primary dataset for subsequent analyses is denoted as 'customers_with_metrics(52&2),' encapsulating client_id, cluster labels, and associated metrics over the 52-week duration.
 
 
 
