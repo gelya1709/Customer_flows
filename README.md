@@ -3,8 +3,8 @@ The project is dedicated to customer segmentation and the identification of the 
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [Data Description](#data-description)
-- [Detailed Description of Analysis](#detailed-description-of-analysis)
+- [Data Source](#data-source)
+- [Steps of Analysis](#detailed-description-of-analysis)
 - [Results](#results) 
 
 ### Project Overview
@@ -31,7 +31,9 @@ to promotions.
 promotions and their joint effectiveness. The results of the analysis provide managers with a deeper
 understanding of changes in customer behavior and the ability to influence these changes
 
-### Data Description
+### Data Source
+
+Data was used at the Hackathon in 2021. The data provider is one of the largest supermarket chains. 
 Period: 01.2019 - 12.2020
 
 **Dataset №1 contains transactional data of customers.**
@@ -51,33 +53,30 @@ Main variables:
 - start date
 - end date
 
-**Brief description of analysis:** 
-- The first part of the analysis includes data preprocessing, clustering customers using transactional data of a Russian supermarket chain, and calculation of flows between them.
-- In the second part such techniques as Singular Spectrum Analysis (SSA), first differences method, and trained Dynamic Bayesian Network (DBN) model are used to find causal relationships between flow coefficients and the number of promotions.
-
 ## Detailed Description of Analysis
 
 ### 1. Data preprocessing.
 
-In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions.
+In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions. We calculated revenue and excluded unnecessary columns.
+
+Dataset.
+![Dataset example](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Dataset%20example.png)
 
 Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
 
 The following key steps were taken in the data preprocessing phase:
 
-- **Column Removal:** Unnecessary columns for analysis were eliminated.
 - **Date Conversion:** Date entries were converted to the datetime data type.
 - **Month Enumeration:** An additional column was added to encode month numbers.
-![Dataset example](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Dataset%20example.png)
-
 - **Summary Statistics:** Calculated unique buyer counts and plotted revenue distribution across days over two years.
-- **Outlier Handling:** To improve data integrity, outliers were identified and removed. Specifically, clients with unusually high purchase frequencies (possibly wholesalers) were identified using a 98% percentile threshold. Figure 1 illustrates the discrete removal of only 13 unique client_ids.
+- **Outlier Handling:** Clients with unusually high purchase frequencies (possibly wholesalers) were identified using a 98% percentile threshold. 
 
+Revenue distribution before and after Outlier Removal.
 ![Revenue Distribution (before&after)](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Revenue_distribution.jpg)
 
-- **Customer Retention Criteria:** Buyers with fewer than 5 purchases in the two-year timeframe were excluded from the dataset. This decision was rooted in the strategic focus on returning customers for subsequent analyses.
+- **Customer Retention Criteria:** As soon as analysis is focused on returning customers, buyers with less than 5 purchases in the 2-year timeframe were excluded from the dataset.
 
-In summary, these data preprocessing efforts resulted in the creation of the *data_for_clustering* dataset. This refined dataset comprises 33,918 original buyers who made more than 5 purchases during the two-year analytical window. 
+The resulting dataset contains 33,918 original buyers who made more than 5 purchases during the 2-year analytical window. 
 
 ### 2. Clustering
 
