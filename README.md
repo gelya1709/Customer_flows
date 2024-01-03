@@ -114,7 +114,21 @@ Two datasets are generated:
 
 The primary dataset for subsequent analyses is denoted as 'customers_with_metrics(52&2),' encapsulating client_id, cluster labels, and associated metrics over the 52-week duration.
 
+### 3. Calculation of flows.
 
+We will work with the data obtained in the previous step *customers_with_metrics(52&2)*
+
+The purpose of this step is to get the size of each cluster and, accordingly, each flow (for example, sleeping to loyal).
+
+We need to deal with NaN values:
+- replace NaN values for columns with cluster labels with churn - this means that the buyer did not make any purchases in this period. This will be the so-called 4th cluster of inactive buyers.
+- replace NaN with 0 for such buyers in the Frequency and Monetary metrics
+
+We keep only the buyers and the clusters assigned to them for each period and calculate the cluster size.
+![Cluster size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20clusters.png)
+
+Next, we use a loop to calculate the sizes of flows and save the result in the *count_of_flows* dataset
+![Flows size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20flows.png)
 
 
 
