@@ -198,6 +198,16 @@ ___
 #### -- Negative flows analysis --
 ![Results Negative flows](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Results%20Negative%20flows.png)
 ___
+#### Conclusions and recommendations
+
+1. The segment of buyers with low activity (Sleeping) requires constant stimulation, otherwise, these buyers flow
+:arrow_right: **should be on an ongoing basis to run two-week promotions designed for a buyer with a low average check**
+2. Billboards and facades affect customers the fastest (within 1 week).
+They have the greatest effect on buyers with medium and high activity (Loyal and Champions segments)
+:arrow_right: **billboards and facades should constantly be present to maintain customer activity, but their number should be optimized**
+3. Seasonal and two-week promotions have a defined effect and begin to work after 2 weeks from the date of launch
+:arrow_right: **these types of promotions should be launched 2 weeks before the expected fall in demand**
+
 The proposed method can be used to estimate the effect of specific promotions without considering other factors. Marketers will be able to track the effect that a specific launched promotion gives, as well as determine its starting point and expected duration. 
 
 In practice, this also will help to track not just an increase in the activity of the buyer, but to assess the increase in activity relative to other buyers. This opportunity is especially relevant for highly seasonal businesses: in their case, the characteristics of all customer segments change over the period and an increase in the activity of one segment can only be assessed relative to others.
