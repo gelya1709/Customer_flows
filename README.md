@@ -1,5 +1,5 @@
 # Analysis of promotions based on customer flows in retail
-The project is dedicated to customer segmentation and the identification of the most effective types of advertising campaigns (hereafter referred to as 'promos' or 'promotions') based on changes in buyers' purchasing activity (hereafter referred to as 'flows') over time. The data set contains more than **20 million observations**. The analysis was carried out in Python and R.
+The project is dedicated to customer segmentation and the identification of the most effective types of promotions based on changes in buyers' purchasing activity over time. The data set contains more than 20 mln records. The analysis was carried out in Python and R.
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -59,11 +59,12 @@ Main variables:
 
 In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions. We calculated revenue and excluded unnecessary columns.
 
-Dataset.
+Dataset:
 ![Dataset example](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Dataset%20example.png)
 
 Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
 
+<br />
 The following key steps were taken in the data preprocessing phase:
 
 - **Date Conversion:** Date entries were converted to the datetime data type.
@@ -78,14 +79,14 @@ Revenue distribution before and after Outlier Removal.
 
 The resulting dataset contains 33,918 original buyers who made more than 5 purchases during the 2-year analytical window. 
 
-
+<br />
 ### 2. Clustering
 
 We chose to shorten the analysis period to a 1-year timeframe, from September 2019 to September 2020, as we wanted to exclude the period of the COVID-19 pandemic.
 
 Also, we added a new column with weeks in the range of 1-52. 
 
-#### 2. Clustering Algorithm:
+#### Clustering Algorithm:
 
 - Computation of buyer activity with such **metrics as Frequency (number of purchases) and Monetary (total spending)** for each period (one period = one week).
 - Both Frequency and Monetary metrics are normalized using the **Standard Scaler**.
@@ -99,6 +100,7 @@ Also, we added a new column with weeks in the range of 1-52.
 - **loyal** - average check 5 000 rubles, 3 purchases per week
 - **champions** - average check 11 000 rubles, 3 purchases per week
 
+<br />
 Distribution of mean_monetary values across clusters over 52 weeks:
 
 ![Monetary Mean](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_mean.png)
@@ -107,7 +109,7 @@ As the result, two datasets are generated:
 - 1st one with client IDs and assigned cluster labels.
 - 2nd one with client IDs, cluster labels, and Frequency and Monetary metrics.
 
-
+<br />
 ### 3. Calculation of flows.
 
 The purpose of this step is to get the size of each cluster and of each flow (for example, sleeping to loyal).
@@ -117,6 +119,7 @@ We need to deal with NaN values:
 1. Replace NaN with 'churn' values for columns with cluster labels. This means that the buyer did not make any purchases in this period. "Churn" is the 4th cluster with inactive buyers.
 2. Replace NaN with 0 for inactive buyers in the Frequency and Monetary metrics.
 
+<br />
 Now we can calculate the sizes of flows and save the result in the *count_of_flows* dataset.
 ![Flows size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20flows.png)
 
@@ -130,6 +133,7 @@ The distributions of clusters and promotions:
 The resulting dataset with flows and the number of promotions is a time series, so we will use **SSA analysis** to work with this data.
 
 We use a function that calculates the **SSA decomposition of series into the window_size components**.
+<br />
 ![SSA components](https://github.com/gelya1709/customer_flows/blob/main/Graphs/SSA%20components.png)
 
 **In the left column** is the original series and its model (the sum of the components into which the series is divided using the SSA method). Within the accuracy of the drawing, the curves merge.
