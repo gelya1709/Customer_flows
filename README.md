@@ -13,8 +13,7 @@ The project is dedicated to customer segmentation and the identification of the 
 campaigns in retail and present an effective tool for creating a satisfying consumer experience.
 However, despite the undeniable effectiveness of such promotions, it is rather difficult to
 evaluate their impact. 
-&nbsp;
-&nbsp;
+
 **The purpose of this project** is to develop a method for evaluating the effects
 of promotions on customer flows and evaluate the effectiveness of various types of Big Media
 promotions using it.
@@ -126,17 +125,18 @@ Now we can calculate the sizes of flows and save the result in the *count_of_flo
 
 
 ___
-### 4. SSA analysis 
+### 4. Time-series analysis 
 
 We need to add data on the number of promotions of different types in each period.
 
 The distributions of clusters and promotions:
 ![Promo distribution](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Promo%20distributions.png)
 
-The resulting dataset with flows and the number of promotions is a time series, so we will use **SSA analysis** to work with this data.
+#### SSA analysis
 
-We use a function that calculates the **SSA decomposition of series into the window_size components**.
-<br>
+The resulting dataset with flows and the number of promotions is a time series, so we will use a function that calculates the **SSA decomposition of series into the window_size components**.
+
+Output of decomposition to 4 components:
 ![SSA components](https://github.com/gelya1709/customer_flows/blob/main/Graphs/SSA%20components.png)
 
 **In the left column** is the original series and its model (the sum of the components into which the series is divided using the SSA method). Within the accuracy of the drawing, the curves merge.
@@ -145,6 +145,8 @@ We use a function that calculates the **SSA decomposition of series into the win
 
 As we can see, in all cases one component SSA1 (blue line) stands out, the values of which are very different from zero. We can say that it describes a trend. The average values of all other components are close to zero, their variation is insignificant. Thus, for further analysis we select only the first component of all series.
 
+#### First-differences transformation
+
 We built the distributions of values and understood that they are not normal → that’s why we will use **first-differences**.
 
 Distribution of original flows:
@@ -152,6 +154,8 @@ Distribution of original flows:
 
 Distribution of first differences:
 ![Distribution of first-differences](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Distribution%20of%20first-differences.png)
+
+#### Correlation
 
 The next step is to check the **correlation coefficient between the size of flows and the number of promotions**. We check if there is a correlation between them and calculate p-value to estimate the significance of the coefficient (purple color indicates p-value < 0.01, yellow one < 0.001)
 
@@ -168,6 +172,12 @@ We will look for it by **training the structure of a Gaussian Bayesian dynamic n
 The best-implemented method is natPsoho.
 
 This network is a set of linear regression equations that represent cause-and-effect relationships.
+
+Regression equation:
+
+y = 𝒂𝟎 + 𝒂𝟏\*𝒙𝟏 + 𝒂𝟐\∗𝒙𝟐 + 𝒂𝟑\*𝒙𝟑 + 𝒂𝟒\*𝒙𝟒,
+where **y** − first difference of flows that presents the intensity of customer flows,
+𝒙𝐢 − first difference of promotions that presents the intensity of promotions.
 
 Regression output of DBN model:
 ![Regression output](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Regression_output.png)
