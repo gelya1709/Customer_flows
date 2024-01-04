@@ -108,7 +108,8 @@ Distribution of mean_monetary values across clusters over 52 weeks:
 As a result, two datasets are generated:
 - 1st one with client IDs and assigned cluster labels.
 - 2nd one with client IDs, cluster labels, and Frequency and Monetary metrics.
-<br>
+
+
 ___
 ### 3. Calculation of flows.
 
@@ -121,6 +122,7 @@ We need to deal with NaN values:
 
 Now we can calculate the sizes of flows and save the result in the *count_of_flows* dataset.
 ![Flows size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20flows.png)
+
 
 ___
 ### 4. SSA analysis 
@@ -154,6 +156,7 @@ The next step is to check the **correlation coefficient between the size of flow
 
 Correlation coefficients between the size of flows and the number of promotions:
 ![Corr coefficients](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Correlation%20coefficents.png)
+
 
 ___
 ### 5. Casual Modelling
