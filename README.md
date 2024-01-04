@@ -77,9 +77,9 @@ Revenue distribution before and after Outlier Removal.
 
 - **Customer Retention Criteria:** As soon as analysis is focused on returning customers, buyers with less than 5 purchases in the 2-year timeframe were excluded from the dataset.
 
-The resulting dataset contains 33,918 original buyers who made more than 5 purchases during the 2-year analytical window. 
+The resulting dataset contains 33,918 original buyers who made more than 5 purchases during the 2-year analytical window. <br />
 
-<br />
+
 ### 2. Clustering
 
 We chose to shorten the analysis period to a 1-year timeframe, from September 2019 to September 2020, as we wanted to exclude the period of the COVID-19 pandemic.
@@ -117,11 +117,11 @@ The purpose of this step is to get the size of each cluster and of each flow (fo
 
 We need to deal with NaN values:
 1. Replace NaN with 'churn' values for columns with cluster labels. This means that the buyer did not make any purchases in this period. "Churn" is the 4th cluster with inactive buyers.
-2. Replace NaN with 0 for inactive buyers in the Frequency and Monetary metrics.
+2. Replace NaN with 0 for inactive buyers in the Frequency and Monetary metrics.<br />
 
-<br />
 Now we can calculate the sizes of flows and save the result in the *count_of_flows* dataset.
 ![Flows size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20flows.png)
+
 
 ### 4. SSA analysis 
 
