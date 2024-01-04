@@ -7,7 +7,7 @@ The project is dedicated to customer segmentation and the identification of the 
 - [Steps of Analysis](#detailed-description-of-analysis)
 - [Results](#results) 
 
-### Project Overview
+## Project Overview
 
 **Motivation:** Big media promotions (billboards, facades, etc.) are widely used for offline marketing
 campaigns in retail and present an effective tool for creating a satisfying consumer experience.
@@ -30,7 +30,7 @@ identified.
 promotions and their joint effectiveness. The results of the analysis provide managers with a deeper
 understanding of changes in customer behavior and the ability to influence these changes
 
-### Data Source
+## Data Source
 
 Data was used at the Hackathon in 2021. The data provider is one of the largest supermarket chains. Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
 
