@@ -63,7 +63,6 @@ Dataset:
 ![Dataset example](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Dataset%20example.png)
 
 Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
-
 <br>
 The following key steps were taken in the data preprocessing phase:
 
@@ -108,8 +107,8 @@ Distribution of mean_monetary values across clusters over 52 weeks:
 As the result, two datasets are generated:
 - 1st one with client IDs and assigned cluster labels.
 - 2nd one with client IDs, cluster labels, and Frequency and Monetary metrics.
-
 <br>
+
 ### 3. Calculation of flows.
 
 The purpose of this step is to get the size of each cluster and of each flow (for example, sleeping to loyal).
