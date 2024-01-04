@@ -186,9 +186,9 @@ Visualization of DBN model:
 ## Results
 
 For analyzing coefficients, we divided the consumer flows into 3 groups: 
-- positive flows (sleeping to loyal, sleeping to champions, loyal to champions, churn to sleeping, churn to loyal, churn to champions),
-- negative flows (sleeping to churn, loyal to sleeping, loyal to churn, champions to loyal, champions to sleeping, champions to loyal),
-- neutral flows (sleeping to sleeping, loyal to loyal, champions to champions and churn to churn accordingly).
+- **positive flows** (sleeping to loyal, sleeping to champions, loyal to champions, churn to sleeping, churn to loyal, churn to champions),
+- **negative flows** (sleeping to churn, loyal to sleeping, loyal to churn, champions to loyal, champions to sleeping, champions to loyal),
+- **neutral flows** (sleeping to sleeping, loyal to loyal, champions to champions and churn to churn accordingly).
 
 For positive flows, the higher the coefficients for the promo, the more effective these promotions are for the business. Positive values indicate that the positive flow has increased due to, for example, placed billboards. For negative flows, on the contrary, the lower the coefficient for the promotion, the more it reduces the flow which is unfavorable for business.
 ___
