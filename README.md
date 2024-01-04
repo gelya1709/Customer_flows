@@ -200,13 +200,10 @@ ___
 ___
 #### Conclusions and recommendations
 
-1. The segment of buyers with low activity (Sleeping) requires constant stimulation, otherwise, these buyers flow
-:arrow_right: **should be on an ongoing basis to run two-week promotions designed for a buyer with a low average check**
-2. Billboards and facades affect customers the fastest (within 1 week).
-They have the greatest effect on buyers with medium and high activity (Loyal and Champions segments)
-:arrow_right: **billboards and facades should constantly be present to maintain customer activity, but their number should be optimized**
-3. Seasonal and two-week promotions have a defined effect and begin to work after 2 weeks from the date of launch
-:arrow_right: **these types of promotions should be launched 2 weeks before the expected fall in demand**
+- The segment of buyers with low activity (Sleeping) requires constant stimulation, otherwise, these buyers flow **should be on an ongoing basis to run two-week promotions designed for a buyer with a low average check**
+- Billboards and facades affect customers the fastest (within 1 week).
+They have the greatest effect on buyers with medium and high activity (Loyal and Champions segments) -> **billboards and facades should constantly be present to maintain customer activity, but their number should be optimized**
+- Seasonal and two-week promotions have a defined effect and begin to work after 2 weeks from the date of launch -> **these types of promotions should be launched 2 weeks before the expected fall in demand**
 
 The proposed method can be used to estimate the effect of specific promotions without considering other factors. Marketers will be able to track the effect that a specific launched promotion gives, as well as determine its starting point and expected duration. 
 
