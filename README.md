@@ -64,7 +64,7 @@ Dataset:
 
 Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
 
-<br />
+<br>
 The following key steps were taken in the data preprocessing phase:
 
 - **Date Conversion:** Date entries were converted to the datetime data type.
@@ -100,7 +100,7 @@ Also, we added a new column with weeks in the range of 1-52.
 - **loyal** - average check 5 000 rubles, 3 purchases per week
 - **champions** - average check 11 000 rubles, 3 purchases per week
 
-<br />
+<br>
 Distribution of mean_monetary values across clusters over 52 weeks:
 
 ![Monetary Mean](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_mean.png)
@@ -109,7 +109,7 @@ As the result, two datasets are generated:
 - 1st one with client IDs and assigned cluster labels.
 - 2nd one with client IDs, cluster labels, and Frequency and Monetary metrics.
 
-<br />
+<br>
 ### 3. Calculation of flows.
 
 The purpose of this step is to get the size of each cluster and of each flow (for example, sleeping to loyal).
@@ -133,7 +133,7 @@ The distributions of clusters and promotions:
 The resulting dataset with flows and the number of promotions is a time series, so we will use **SSA analysis** to work with this data.
 
 We use a function that calculates the **SSA decomposition of series into the window_size components**.
-<br />
+<br>
 ![SSA components](https://github.com/gelya1709/customer_flows/blob/main/Graphs/SSA%20components.png)
 
 **In the left column** is the original series and its model (the sum of the components into which the series is divided using the SSA method). Within the accuracy of the drawing, the curves merge.
