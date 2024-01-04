@@ -130,7 +130,7 @@ We need to add data on the number of promotions of different types in each perio
 The distributions of clusters and promotions:
 ![Promo distribution](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Promo%20distributions.png)
 
-#### - SSA analysis
+#### -- SSA analysis --
 
 The resulting dataset with flows and the number of promotions is a time series, so we will use a function that calculates the **SSA decomposition of series into the window_size components**.
 
@@ -142,7 +142,7 @@ Output of decomposition to 4 components:
 
 As we can see, in all cases one component SSA1 (blue line) stands out, the values of which are very different from zero. We can say that it describes a trend. The average values of all other components are close to zero, their variation is insignificant. Thus, for further analysis we select only the first component of all series.
 
-#### - First-differences transformation
+#### -- First-differences transformation --
 
 We built the distributions of values and understood that they are not normal → that’s why we will use **first-differences**.
 
@@ -152,7 +152,7 @@ Distribution of original flows:
 Distribution of first differences:
 ![Distribution of first-differences](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Distribution%20of%20first-differences.png)
 
-#### - Correlation
+#### -- Correlation --
 
 The next step is to check the **correlation coefficient between the size of flows and the number of promotions**. We check if there is a correlation between them and calculate p-value to estimate the significance of the coefficient (purple color indicates p-value < 0.01, yellow one < 0.001)
 
