@@ -22,10 +22,9 @@ promotions using it.
 - The first part of the analysis includes data preprocessing, clustering customers using transactional data of a Russian supermarket chain, and calculation of flows between them.
 - In the second part such techniques as Singular Spectrum Analysis (SSA), first differences method, and trained Dynamic Bayesian Network (DBN) model are used to find causal relationships between flow coefficients and the number of promotions.
 
-**Result:** The types of promotions that have the greatest impact on positive (when
+**Result:** We identified types of promotions that have the greatest impact on positive (when
 buyers become more active) and negative (when buying activity decreases) flows were
-identified. Also, assumptions have been made about the most sensitive consumer clusters
-to promotions. 
+identified. 
 
 **Impact:** The developed method can be used in marketing to evaluate both individual
 promotions and their joint effectiveness. The results of the analysis provide managers with a deeper
@@ -34,6 +33,7 @@ understanding of changes in customer behavior and the ability to influence these
 ### Data Source
 
 Data was used at the Hackathon in 2021. The data provider is one of the largest supermarket chains. 
+
 Period: 01.2019 - 12.2020
 
 **Dataset №1 contains transactional data of customers.**
@@ -78,23 +78,20 @@ Revenue distribution before and after Outlier Removal.
 
 The resulting dataset contains 33,918 original buyers who made more than 5 purchases during the 2-year analytical window. 
 
+
 ### 2. Clustering
 
-To proceed with the analysis, we first load the preprocessed dataset *data_for_clustering*. 
+We chose to shorten the analysis period to a 1-year timeframe, from September 2019 to September 2020, as we wanted to exclude the period of the COVID-19 pandemic.
 
-We choose to shorten the analysis period to a one-year timeframe, spanning from September 2019 to September 2020, thus excluding the period of the COVID-19 pandemic due to its disruptive influence on the stability of time series data.
-
-The dataset is then filtered to encompass weekly periods, with week numbers adjusted using the isocalendar method and subsequently compressed into the 1-50 range for analytical convenience. 
-
-The resulting input data for clustering contains the transactional records of buyers within the specified timeframe with week numbers over 52 full weeks.
+Also, we added a new column with weeks in the range of 1-52. 
 
 #### 2. Clustering Algorithm:
 
-- A subset is selected for each week, and buyer activity is computed with such **metrics as Frequency (number of purchases) and Monetary (total spending)** for each period.
+- Computation of buyer activity with such **metrics as Frequency (number of purchases) and Monetary (total spending)** for each period (one period = one week).
 - Both Frequency and Monetary metrics are normalized using the **Standard Scaler**.
-- The **K-means++ algorithm** is applied with the selection of 3 clusters, driven by the observation that this configuration yields the highest silhouette score values across the 52 periods.
-- **Silhouette score**, computed as an average over all periods, attains a value of 0.59.
-- Cluster Labelling with **custom create_names function**: *create_names* is employed to assign labels to clusters, categorizing them into 'sleeping,' 'loyal,' and 'champions' based on the normalized Frequency and Monetary metrics in each period.
+- The **K-means++ algorithm** is applied with the selection of 3 clusters.
+- **Silhouette score**, computed as an average over all periods, equals to 0.59.
+- Cluster Labelling with **custom create_names function**: *create_names* is employed to assign labels to clusters, categorizing them into 'sleeping,' 'loyal,' and 'champions' based on Frequency and Monetary metrics.
 
 **As a result, 3 consumer clusters were received:**
 
@@ -106,77 +103,74 @@ Distribution of mean_monetary values across clusters over 52 weeks:
 
 ![Monetary Mean](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_mean.png)
 
-#### Resultant Datasets:
+As the result, two datasets are generated:
+- 1st one with client IDs and assigned cluster labels.
+- 2nd one with client IDs, cluster labels, and Frequency and Monetary metrics.
 
-Two datasets are generated:
-- One with client_id and assigned cluster labels for each period.
-- Another with client_id, cluster labels, and metrics for each period, with the distribution visualized in Figure 2.
-
-The primary dataset for subsequent analyses is denoted as 'customers_with_metrics(52&2),' encapsulating client_id, cluster labels, and associated metrics over the 52-week duration.
 
 ### 3. Calculation of flows.
 
-We will work with the data obtained in the previous step *customers_with_metrics(52&2)*
-
-The purpose of this step is to get the size of each cluster and, accordingly, each flow (for example, sleeping to loyal).
+The purpose of this step is to get the size of each cluster and of each flow (for example, sleeping to loyal).
 ![Flows calculation](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Flows%20calculation.png)
 
 We need to deal with NaN values:
-- replace NaN values for columns with cluster labels with churn - this means that the buyer did not make any purchases in this period. This will be the so-called 4th cluster of inactive buyers.
-- replace NaN with 0 for such buyers in the Frequency and Monetary metrics
+1. Replace NaN with 'churn' values for columns with cluster labels. This means that the buyer did not make any purchases in this period. "Churn" is the 4th cluster with inactive buyers.
+2. Replace NaN with 0 for inactive buyers in the Frequency and Monetary metrics.
 
-We keep only the buyers and the clusters assigned to them for each period and calculate the cluster size.
-![Cluster size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20clusters.png)
-
-Next, we use a loop to calculate the sizes of flows and save the result in the *count_of_flows* dataset
+Now we can calculate the sizes of flows and save the result in the *count_of_flows* dataset.
 ![Flows size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20flows.png)
 
 ### 4. SSA analysis 
 
-The dataset obtained in the last step is a time series, so we will use analysis for preprocessing and analysis of time series - SSA analysis.
+We need to add data on the number of promotions of different types in each period.
 
-Let's add data on the number of promotions of different types in each period.
-
-The distribution looks like:
+The distributions of clusters and promotions:
 ![Promo distribution](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Promo%20distributions.png)
 
-The resulting dataset with flows and the number of promotions is a time series, so we will use analysis for preprocessing and analysis of time series - SSA analysis.
+The resulting dataset with flows and the number of promotions is a time series, so we will use **SSA analysis** to work with this data.
 
-We use a function that calculates the SSA decomposition of series into the window_size components
+We use a function that calculates the **SSA decomposition of series into the window_size components**.
 ![SSA components](https://github.com/gelya1709/customer_flows/blob/main/Graphs/SSA%20components.png)
 
-In the left column is the original series and its model** (the sum of the components into which the series is divided using the SSA method). Within the accuracy of the drawing, the curves merge.
+**In the left column** is the original series and its model (the sum of the components into which the series is divided using the SSA method). Within the accuracy of the drawing, the curves merge.
 
-**In the right column are the components into which the series is divided**. As we can see, in all cases one component SSA1 (blue line) stands out, the values of which are very different from zero. We can say that it describes a trend. The average values of all other components are close to zero, their variation is insignificant. Thus, for further analysis we select only the first component of all series
+**In the right column** are the components into which the series is divided. 
 
-We build the distributions of values and understood that they are not normal → that’s why we will use first-differences for further analysis
+As we can see, in all cases one component SSA1 (blue line) stands out, the values of which are very different from zero. We can say that it describes a trend. The average values of all other components are close to zero, their variation is insignificant. Thus, for further analysis we select only the first component of all series.
+
+We built the distributions of values and understood that they are not normal → that’s why we will use **first-differences**.
+
+Distribution of original flows:
 ![Distribution of original flows](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Distribution%20of%20original%20flows.png)
+
+Distribution of first differences:
 ![Distribution of first-differences](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Distribution%20of%20first-differences.png)
 
-The next step is to check the correlation coefficient between the size of flows and the number of promotions. We check if there is a correlation between them and calculate p=value to check the significance of the coefficient. (purple values, where p-value<0.05, yellow <
+The next step is to check the **correlation coefficient between the size of flows and the number of promotions**. We check if there is a correlation between them and calculate p-value to estimate the significance of the coefficient (purple color indicates p-value < 0.01, yellow one < 0.001)
 
+Correlation coefficients between the size of flows and the number of promotions:
 ![Corr coefficients](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Correlation%20coefficents.png)
-
-It is clear from the tables that there are statistically significant correlation values, which means we continue our analysis.
 
 ### 5. Casual Modelling
 
-As you can see, there is a correlation between promotions and flows, and it depends on the lag. But this does not mean that there is a cause-and-effect relationship.
-We will look for it by training the structure of a Gaussian Bayesian dynamic network. The corresponding library is implemented only for R https://github.com/dkesada/dbnR.
+As we can see, there is a correlation between promotions and flows. But this does not mean that there is a cause-and-effect relationship.
+We will look for it by **training the structure of a Gaussian Bayesian dynamic network**. The corresponding library is implemented only for R https://github.com/dkesada/dbnR.
 
 The best-implemented method is natPsoho.
 
 This network is a set of linear regression equations that represent cause-and-effect relationships.
 
-Regression output:
+Regression output of DBN model:
 ![Regression output](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Regression_output.png)
 
-DBN model:
+Visualization of DBN model:
 ![DBN model](https://github.com/gelya1709/customer_flows/blob/main/Graphs/DBN%20model.png)
 
 ### Results
 
+Positive flows analysis:
 ![Results Positive flows](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Results%20Positive%20flows.png)
-    
+
+Negative flows analysis:
 ![Results Negative flows](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Results%20Negative%20flows.png)
 
