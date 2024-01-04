@@ -13,11 +13,11 @@ The project is dedicated to customer segmentation and the identification of the 
 campaigns in retail and present an effective tool for creating a satisfying consumer experience.
 However, despite the undeniable effectiveness of such promotions, it is rather difficult to
 evaluate their impact. 
-
+&nbsp;
 **The purpose of this project** is to develop a method for evaluating the effects
 of promotions on customer flows and evaluate the effectiveness of various types of Big Media
 promotions using it.
-
+\
 **Brief description of analysis:** 
 - The first part of the analysis includes data preprocessing, clustering customers using transactional data of a Russian supermarket chain, and calculation of flows between them.
 - In the second part such techniques as Singular Spectrum Analysis (SSA), first differences method, and trained Dynamic Bayesian Network (DBN) model are used to find causal relationships between flow coefficients and the number of promotions.
