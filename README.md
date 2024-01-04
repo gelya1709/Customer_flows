@@ -62,8 +62,7 @@ In the initial phase of our analysis, we conducted data preprocessing on the pri
 Dataset:
 ![Dataset example](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Dataset%20example.png)
 
-Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
-<br\>
+Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public <br\>
 
 The following key steps were taken in the data preprocessing phase:
 
