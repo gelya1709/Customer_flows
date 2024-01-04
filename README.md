@@ -55,7 +55,7 @@ Main variables:
 
 ## Steps of Analysis
 
-### 1. Data preprocessing. ![Link to code](https://github.com/gelya1709/Customer_flows/blob/main/Step_1_Data_preprocessing.ipynb)
+### 1. Data preprocessing. [Link to code](https://github.com/gelya1709/Customer_flows/blob/main/Step_1_Data_preprocessing.ipynb)
 
 In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions. We calculated revenue and excluded unnecessary columns.
 
@@ -78,7 +78,7 @@ Revenue distribution before and after Outlier Removal.
 The resulting dataset contains 33,918 original buyers who made more than 5 purchases during the 2-year analytical window. <br />
 
 ___
-### 2. Clustering
+### 2. Clustering. [Link to code](https://github.com/gelya1709/Customer_flows/blob/main/Step_2_Clustering.ipynb)
 
 We chose to shorten the analysis period to a 1-year timeframe, from September 2019 to September 2020, as we wanted to exclude the period of the COVID-19 pandemic.
 
