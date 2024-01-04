@@ -111,12 +111,14 @@ As a result, two datasets are generated:
 ___
 ### 3. Calculation of flows. [Link to code](https://github.com/gelya1709/Customer_flows/blob/main/Step_3_Calculation_of_flows.ipynb)
 
-The purpose of this step is to get the size of each cluster and of each flow (for example, sleeping to loyal).
+The purpose of this step is to get the size of each cluster and of each flow (for example, sleeping to loyal). 
 ![Flows calculation](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Flows%20calculation.png)
 
 We need to deal with NaN values:
 1. Replace NaN with 'churn' values for columns with cluster labels. This means that the buyer did not make any purchases in this period. "Churn" is the 4th cluster with inactive buyers.
 2. Replace NaN with 0 for inactive buyers in the Frequency and Monetary metrics.<br />
+
+**Of the 4 clusters obtained in each of the 52 weeks, 16 flows (for example, from_churn_to_sleeping for 51 periods) are calculated.**
 
 Now we can calculate the sizes of flows and save the result in the *count_of_flows* dataset.
 ![Flows size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20flows.png)
