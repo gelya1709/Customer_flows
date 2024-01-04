@@ -192,10 +192,10 @@ For analyzing coefficients, we divided the consumer flows into 3 groups:
 
 For positive flows, the higher the coefficients for the promo, the more effective these promotions are for the business. Positive values indicate that the positive flow has increased due to, for example, placed billboards. For negative flows, on the contrary, the lower the coefficient for the promotion, the more it reduces the flow which is unfavorable for business.
 
-### Positive flows analysis
+#### -- Positive flows analysis --
 ![Results Positive flows](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Results%20Positive%20flows.png)
 
-### Negative flows analysis
+#### -- Negative flows analysis --
 ![Results Negative flows](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Results%20Negative%20flows.png)
 
 The proposed method can be used to estimate the effect of specific promotions without considering other factors. Marketers will be able to track the effect that a specific launched promotion gives, as well as determine its starting point and expected duration. 
