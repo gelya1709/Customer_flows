@@ -120,7 +120,6 @@ We need to deal with NaN values:
 
 **Of the 4 clusters obtained in each of the 52 weeks, 16 flows (for example, from_churn_to_sleeping for 51 periods) are calculated.**
 
-Now we can calculate the sizes of flows and save the result in the *count_of_flows* dataset.
 ![Flows size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20flows.png)
 
 
