@@ -14,6 +14,7 @@ campaigns in retail and present an effective tool for creating a satisfying cons
 However, despite the undeniable effectiveness of such promotions, it is rather difficult to
 evaluate their impact. 
 &nbsp;
+&nbsp;
 **The purpose of this project** is to develop a method for evaluating the effects
 of promotions on customer flows and evaluate the effectiveness of various types of Big Media
 promotions using it.
