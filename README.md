@@ -109,7 +109,7 @@ As a result, two datasets are generated:
 
 
 ___
-### 3. Calculation of flows.
+### 3. Calculation of flows. [Link to code](https://github.com/gelya1709/Customer_flows/blob/main/Step_3_Calculation_of_flows.ipynb)
 
 The purpose of this step is to get the size of each cluster and of each flow (for example, sleeping to loyal).
 ![Flows calculation](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Flows%20calculation.png)
@@ -123,14 +123,14 @@ Now we can calculate the sizes of flows and save the result in the *count_of_flo
 
 
 ___
-### 4. Time-series analysis 
+### 4. Time-series analysis. [Link to code](https://github.com/gelya1709/Customer_flows/blob/main/Step_4_SSA_analysis.ipynb) 
 
 We need to add data on the number of promotions of different types in each period.
 
 The distributions of clusters and promotions:
 ![Promo distribution](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Promo%20distributions.png)
 
-#### SSA analysis
+#### - SSA analysis
 
 The resulting dataset with flows and the number of promotions is a time series, so we will use a function that calculates the **SSA decomposition of series into the window_size components**.
 
@@ -142,7 +142,7 @@ Output of decomposition to 4 components:
 
 As we can see, in all cases one component SSA1 (blue line) stands out, the values of which are very different from zero. We can say that it describes a trend. The average values of all other components are close to zero, their variation is insignificant. Thus, for further analysis we select only the first component of all series.
 
-#### First-differences transformation
+#### - First-differences transformation
 
 We built the distributions of values and understood that they are not normal → that’s why we will use **first-differences**.
 
@@ -152,7 +152,7 @@ Distribution of original flows:
 Distribution of first differences:
 ![Distribution of first-differences](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Distribution%20of%20first-differences.png)
 
-#### Correlation
+#### - Correlation
 
 The next step is to check the **correlation coefficient between the size of flows and the number of promotions**. We check if there is a correlation between them and calculate p-value to estimate the significance of the coefficient (purple color indicates p-value < 0.01, yellow one < 0.001)
 
@@ -161,7 +161,7 @@ Correlation coefficients between the size of flows and the number of promotions:
 
 
 ___
-### 5. Casual Modelling
+### 5. Casual Modelling. [Link to code](https://github.com/gelya1709/Customer_flows/blob/main/Step_5_Casual_modelling.ipynb)
 
 As we can see, there is a correlation between promotions and flows. But this does not mean that there is a cause-and-effect relationship.
 We will look for it by **training the structure of a Gaussian Bayesian dynamic network**. The corresponding library is implemented only for R https://github.com/dkesada/dbnR.
