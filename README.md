@@ -11,7 +11,7 @@ The project is dedicated to customer segmentation and the identification of the 
 
 **Motivation:** Big media promotions (billboards, facades, etc.) are widely used for offline marketing
 campaigns in retail and present an effective tool for creating a satisfying consumer experience.
-However, despite the undeniable effectiveness of such promotions, it is rather difficult to
+However, despite the effectiveness of such promotions, it is rather difficult to
 evaluate their impact. 
 
 **The purpose of this project** is to develop a method for evaluating the effects
