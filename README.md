@@ -59,12 +59,12 @@ Main variables:
 
 In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions. We calculated revenue and excluded unnecessary columns.
 
+Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
+
 Dataset:
 ![Dataset example](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Dataset%20example.png)
 
-Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
-<pre> 
-</pre>
+
 The following key steps were taken in the data preprocessing phase:
 
 - **Date Conversion:** Date entries were converted to the datetime data type.
@@ -81,7 +81,7 @@ The resulting dataset contains 33,918 original buyers who made more than 5 purch
 
 
 ### 2. Clustering
-
+___
 We chose to shorten the analysis period to a 1-year timeframe, from September 2019 to September 2020, as we wanted to exclude the period of the COVID-19 pandemic.
 
 Also, we added a new column with weeks in the range of 1-52. 
