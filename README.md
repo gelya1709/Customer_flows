@@ -17,7 +17,7 @@ evaluate their impact.
 **The purpose of this project** is to develop a method for evaluating the effects
 of promotions on customer flows and evaluate the effectiveness of various types of Big Media
 promotions using it.
-\
+
 **Brief description of analysis:** 
 - The first part of the analysis includes data preprocessing, clustering customers using transactional data of a Russian supermarket chain, and calculation of flows between them.
 - In the second part such techniques as Singular Spectrum Analysis (SSA), first differences method, and trained Dynamic Bayesian Network (DBN) model are used to find causal relationships between flow coefficients and the number of promotions.
@@ -32,7 +32,7 @@ understanding of changes in customer behavior and the ability to influence these
 
 ### Data Source
 
-Data was used at the Hackathon in 2021. The data provider is one of the largest supermarket chains. 
+Data was used at the Hackathon in 2021. The data provider is one of the largest supermarket chains. Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
 
 Period: 01.2019 - 12.2020
 
@@ -58,8 +58,6 @@ Main variables:
 ### 1. Data preprocessing.
 
 In the initial phase of our analysis, we conducted data preprocessing on the primary dataset, *pricing_hackathon_checks_train*, containing information about purchasing transactions. We calculated revenue and excluded unnecessary columns.
-
-Due to the real nature of the data, it has been hashed to ensure confidentiality, preventing the release of the original dataset to the public.
 
 Dataset:
 ![Dataset example](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Dataset%20example.png)
@@ -91,7 +89,7 @@ Also, we added a new column with weeks in the range of 1-52.
 - Computation of buyer activity with such **metrics as Frequency (number of purchases) and Monetary (total spending)** for each period (one period = one week).
 - Both Frequency and Monetary metrics are normalized using the **Standard Scaler**.
 - The **K-means++ algorithm** is applied with the selection of 3 clusters.
-- **Silhouette score**, computed as an average over all periods, equals to 0.59.
+- **Silhouette score**, computed as an average over all periods, equals 0.59.
 - Cluster Labelling with **custom create_names function**: *create_names* is employed to assign labels to clusters, categorizing them into 'sleeping,' 'loyal,' and 'champions' based on Frequency and Monetary metrics.
 
 **As a result, 3 consumer clusters were received:**
@@ -139,9 +137,8 @@ The resulting dataset with flows and the number of promotions is a time series, 
 Output of decomposition to 4 components:
 ![SSA components](https://github.com/gelya1709/customer_flows/blob/main/Graphs/SSA%20components.png)
 
-**In the left column** is the original series and its model (the sum of the components into which the series is divided using the SSA method). Within the accuracy of the drawing, the curves merge.
-
-**In the right column** are the components into which the series is divided. 
+- In the left column is the original series and its model (the sum of the components into which the series is divided using the SSA method). Within the accuracy of the drawing, the curves merge.
+- In the right column are the components into which the series is divided. 
 
 As we can see, in all cases one component SSA1 (blue line) stands out, the values of which are very different from zero. We can say that it describes a trend. The average values of all other components are close to zero, their variation is insignificant. Thus, for further analysis we select only the first component of all series.
 
@@ -175,7 +172,7 @@ This network is a set of linear regression equations that represent cause-and-ef
 
 Regression equation:
 
-y = 𝒂𝟎 + 𝒂𝟏\*𝒙𝟏 + 𝒂𝟐\∗𝒙𝟐 + 𝒂𝟑\*𝒙𝟑 + 𝒂𝟒\*𝒙𝟒,
+**y =** 𝒂𝟎 + 𝒂𝟏\*𝒙𝟏 + 𝒂𝟐\*𝒙𝟐 + 𝒂𝟑\*𝒙𝟑 + 𝒂𝟒\*𝒙𝟒,
 where **y** − first difference of flows that presents the intensity of customer flows,
 𝒙𝐢 − first difference of promotions that presents the intensity of promotions.
 
