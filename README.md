@@ -79,9 +79,9 @@ Revenue distribution before and after Outlier Removal.
 
 The resulting dataset contains 33,918 original buyers who made more than 5 purchases during the 2-year analytical window. <br />
 
-
-### 2. Clustering
 ___
+### 2. Clustering
+
 We chose to shorten the analysis period to a 1-year timeframe, from September 2019 to September 2020, as we wanted to exclude the period of the COVID-19 pandemic.
 
 Also, we added a new column with weeks in the range of 1-52. 
@@ -105,11 +105,11 @@ Distribution of mean_monetary values across clusters over 52 weeks:
 
 ![Monetary Mean](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Monetary_mean.png)
 
-As the result, two datasets are generated:
+As a result, two datasets are generated:
 - 1st one with client IDs and assigned cluster labels.
 - 2nd one with client IDs, cluster labels, and Frequency and Monetary metrics.
 <br>
-
+___
 ### 3. Calculation of flows.
 
 The purpose of this step is to get the size of each cluster and of each flow (for example, sleeping to loyal).
@@ -122,7 +122,7 @@ We need to deal with NaN values:
 Now we can calculate the sizes of flows and save the result in the *count_of_flows* dataset.
 ![Flows size](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Size%20of%20flows.png)
 
-
+___
 ### 4. SSA analysis 
 
 We need to add data on the number of promotions of different types in each period.
@@ -155,6 +155,7 @@ The next step is to check the **correlation coefficient between the size of flow
 Correlation coefficients between the size of flows and the number of promotions:
 ![Corr coefficients](https://github.com/gelya1709/customer_flows/blob/main/Graphs/Correlation%20coefficents.png)
 
+___
 ### 5. Casual Modelling
 
 As we can see, there is a correlation between promotions and flows. But this does not mean that there is a cause-and-effect relationship.
@@ -170,6 +171,7 @@ Regression output of DBN model:
 Visualization of DBN model:
 ![DBN model](https://github.com/gelya1709/customer_flows/blob/main/Graphs/DBN%20model.png)
 
+___
 ### Results
 
 Positive flows analysis:
